@@ -24,7 +24,6 @@
 #include <vector>
 
 #include "caf/config.hpp"
-#include "caf/detail/io_export.hpp"
 #include "caf/extend.hpp"
 #include "caf/io/accept_handle.hpp"
 #include "caf/io/connection_handle.hpp"
@@ -84,15 +83,15 @@ using multiplexer_poll_shadow_data = native_socket;
 #endif // CAF_POLL_MULTIPLEXER
 
 /// Defines the bitmask for input (read) socket events.
-CAF_IO_EXPORT extern const event_mask_type input_mask;
+extern const event_mask_type input_mask;
 
 /// Defines the bitmask for output (write) socket events.
-CAF_IO_EXPORT extern const event_mask_type output_mask;
+extern const event_mask_type output_mask;
 
 /// Defines the bitmask for error socket events.
-CAF_IO_EXPORT extern const event_mask_type error_mask;
+extern const event_mask_type error_mask;
 
-class CAF_IO_EXPORT default_multiplexer : public multiplexer {
+class default_multiplexer : public multiplexer {
 public:
   friend class io::middleman; // disambiguate reference
   friend class supervisor;
@@ -267,18 +266,18 @@ inline accept_handle accept_hdl_from_socket(native_socket fd) {
   return accept_handle::from_int(int64_from_native_socket(fd));
 }
 
-CAF_IO_EXPORT expected<native_socket>
+expected<native_socket>
 new_tcp_connection(const std::string& host, uint16_t port,
                    optional<protocol::network> preferred = none);
 
-CAF_IO_EXPORT expected<native_socket>
+expected<native_socket>
 new_tcp_acceptor_impl(uint16_t port, const char* addr, bool reuse_addr);
 
-CAF_IO_EXPORT expected<std::pair<native_socket, ip_endpoint>>
+expected<std::pair<native_socket, ip_endpoint>>
 new_remote_udp_endpoint_impl(const std::string& host, uint16_t port,
                              optional<protocol::network> preferred = none);
 
-CAF_IO_EXPORT expected<std::pair<native_socket, protocol::network>>
+expected<std::pair<native_socket, protocol::network>>
 new_local_udp_endpoint_impl(uint16_t port, const char* addr,
                             bool reuse_addr = false,
                             optional<protocol::network> preferred = none);
