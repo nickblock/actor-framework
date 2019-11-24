@@ -406,13 +406,13 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
                "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
                IMMEDIATE @ONLY)
 # add uninstall target if it does not exist yet
-if(NOT TARGET uninstall)
-  add_custom_target(uninstall)
-endif()
-add_custom_command(TARGET uninstall
-                   PRE_BUILD
-                   COMMAND "${CMAKE_COMMAND}" -P
-                   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+# if(NOT TARGET uninstall)
+#   add_custom_target(uninstall)
+# endif()
+# add_custom_command(TARGET uninstall
+#                    PRE_BUILD
+#                    COMMAND "${CMAKE_COMMAND}" -P
+#                    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 ################################################################################
 #                       set include paths for subprojects                      #
